@@ -1,0 +1,20 @@
+
+server:
+  port: 1213
+
+spring:
+  profiles:
+    active: jdbc
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/config_server
+    username: root
+    password: 123456
+  cloud:
+    config:
+      server:
+        jdbc:
+          sql: SELECT `key`, 'value' from properties where application=? and profile=? and label=?
+logging:
+  level:
+    root: debug
